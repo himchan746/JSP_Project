@@ -72,6 +72,7 @@
 							<li><a href="join.jsp">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
+							<li><a href="view.jsp?id=${idsession }">${idsession }</a> 님</li>
 							<li><a href="logout.jsp">로그아웃</a></li>
 						</c:otherwise>
 					</c:choose>

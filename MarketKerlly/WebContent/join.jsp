@@ -93,6 +93,9 @@
 </style>
 </head>
 <body>
+
+${msg}
+
 	<%@include file="header.jsp"%>
 	<section id="loginwrap">
 		<form action="joinok.jsp" method="post"> <!-- -------------- formtag  -->
@@ -110,10 +113,10 @@
 					<th colspan="2"><input type="text" id="id" name="name" autocomplete="off" placeholder="이름을 입력해주세요"><br></th>
 				</tr>
 				<tr>
-					<th colspan="2"><input type="text" id="id" name="depart" autocomplete="off" placeholder="부서를 입력해주세요"><br></th>
+					<th colspan="2"><input type="text" id="id" name="addr" autocomplete="off" placeholder="주소를 입력해주세요"><br></th>
 				</tr>
 				<tr>
-					<th colspan="2"><input type="text" id="id" name="rank" autocomplete="off" placeholder="직급을 입력해주세요"><br></th>
+					<th colspan="2"><input type="text" id="id" name="tel" autocomplete="off" placeholder="전화번호를 입력해주세요"><br></th>
 				</tr>
 				<tr>
 					<th colspan="2"><input type="submit" id="okbutton" value="회원가입"></th>

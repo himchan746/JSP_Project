@@ -6,38 +6,23 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문제지</title>
+<title>회원 가입</title>
 </head>
 <body>
 	<fmt:requestEncoding value="utf-8" />
-	<jsp:useBean id="dao" class="exam.memberDAO" />
-	<c:set var="get" value="${dao.getById(param.id) }" />
+	<jsp:useBean id="dao" class="customer.CustomerDAO" />
+	<jsp:useBean id="dto" class="customer.CustomerDTO" />
+	<jsp:setProperty property="*" name="dto"/>
+	<c:set var="result" value="${dao.join(dto) }" />
+	
 	<c:choose>
-		<c:when test="${param.id == ''}">
-			<script type="text/javascript">
-				alert('아이디를 입력해주세요');
-				location.href="join.jsp";
-			</script>
-		</c:when>		
-		<c:when test="${param.pwd == ''}">
-			<script type="text/javascript">
-				alert('패스워드를 입력해주세요');
-				location.href="join.jsp";
-			</script>
-		</c:when>
-		<c:when test="${get.id == param.id}">
-			<script type="text/javascript">
-				alert('아이디가 중복입니다.');
-				location.href="join.jsp";
-			</script>
+		<c:when test="${ result ne 1}">
+			<c:set var="msg"  value="<script>alert('이미 사용중인 아이디 입니다.')</script> "/>
 		</c:when>
 		<c:otherwise>
-			<c:set var = "result" value="${dao.join(param.id , param.pwd, param.name, param.depart, param.rank)}"/>
-			<script type="text/javascript">
-				alert("회원가입 성공입니다.");
-				location.href="login.jsp";
-			</script>
+		
 		</c:otherwise>
 	</c:choose>
+	
 </body>
 </html>

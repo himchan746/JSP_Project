@@ -9,14 +9,14 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class memberDAO {
-	private String id = "jsp", pwd = "1234";
+	private String id = "jsp1", pwd = "1234";
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	private Connection con;
 	private ResultSet rs;
 	private PreparedStatement ps;
 
 	public memberDAO() throws ClassNotFoundException, SQLException {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Class.forName("oracle.jdbc.OracleDriver");
 		con = DriverManager.getConnection(url, id, pwd);
 	}
 

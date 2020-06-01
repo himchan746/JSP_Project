@@ -27,7 +27,6 @@ img {
 
 #article1 {
 	display: flex;
-	vertical-align: middle;
 }
 #article1 article{
 	padding: ;
@@ -39,20 +38,9 @@ img {
 	<section>
 		<div id="mainpic">사진 넣어주세요</div>
 		<div id="howAboutThis">
-			<h3>이 상품 어때요?</h3>
+			<div><h3>이 상품 어때요?</h3></div>
 			<div id = "article1">
-				<article>
-					<img src="#">
-				</article>
-				<article>
-					<img src="#">
-				</article>
-				<article>
-					<img src="#">
-				</article>
-				<article>
-					<img src="#">
-				</article>
+			
 			</div>
 		</div>
 	</section>

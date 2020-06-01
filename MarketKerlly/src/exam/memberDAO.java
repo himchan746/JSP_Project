@@ -31,6 +31,10 @@ public class memberDAO {
 			dto.setName(rs.getString(3));
 			dto.setDepart(rs.getString(4));
 			dto.setRank(rs.getString(5));
+			
+			
+			
+			
 		}
 		return dto;
 	}

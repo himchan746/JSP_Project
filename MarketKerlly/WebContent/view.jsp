@@ -45,7 +45,7 @@
 			</script>
 		</c:when>
 		<c:otherwise>
-			<jsp:useBean id="dao" class="exam.memberDAO" />
+			<jsp:useBean id="dao" class="customer.CustomerDAO" />
 			<c:set var="dto" value="${dao.getById(param.id) }" />
 			<%@ include file="header.jsp"%>
 			<section id="viewsection">

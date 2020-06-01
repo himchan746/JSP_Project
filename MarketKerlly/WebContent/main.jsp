@@ -36,6 +36,7 @@ img {
 </style>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 	<section>
 		<div id="mainpic">사진 넣어주세요</div>
 		<div id="howAboutThis">

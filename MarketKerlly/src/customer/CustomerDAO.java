@@ -66,4 +66,35 @@ public class CustomerDAO {
 		}
 		return result;
 	}
+	public int modify(CustomerDTO dto) throws SQLException {
+		int result=0;
+		ps = con.prepareStatement("update customer set pwd=?, name=?, addr=?, tel=? where id = ?");
+		ps.setString(1, dto.getPwd());
+		ps.setString(2, dto.getName());
+		ps.setString(3, dto.getAddr());
+		ps.setString(4, dto.getTel());
+		ps.setString(5, dto.getId());
+		try {
+		result = ps.executeUpdate();
+		}catch(SQLException e) {}
+		return result;
+	}
+	
+	public void delete(String id) throws SQLException {
+		ps = con.prepareStatement("delete customer where id = ?");
+		ps.setString(1, id);
+		try {
+			ps.executeUpdate();
+		} catch(SQLException e) {}
+	} 
 }
+
+
+
+
+
+
+
+
+
+

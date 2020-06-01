@@ -25,7 +25,7 @@
 	color: white;
 
 }
-#viewbackbt{
+#viewbt{
 	background: #FF3366;
 	width: 250px;
 	height: 30px;
@@ -50,6 +50,7 @@
 			<%@ include file="header.jsp"%>
 			<section id="viewsection">
 				<table id="viewtable" border="1">
+					<caption><input id="viewbt" type="button" value = "돌아가기" onclick="location.href='main.jsp'"></caption>
 					<tr>
 						<td colspan="2" id = "nametitle"><h2>${dto.name }님 개인정보입니다.</h2></td>
 					</tr>
@@ -66,15 +67,18 @@
 						<td>${dto.name }</td>
 					</tr>
 					<tr>
-						<td>부서</td>
-						<td>${dto.depart }</td>
+						<td>주소</td>
+						<td>${dto.addr }</td>
 					</tr>
 					<tr>
-						<td>직급</td>
-						<td>${dto.rank }</td>
+						<td>전화번호</td>
+						<td>${dto.tel }</td>
 					</tr>
 					<tr>
-						<td colspan="2"><input id="viewbackbt" type="button" value = "돌아가기" onclick="location.href='main.jsp'"></td>
+						<td colspan="2">
+							<input id="viewbt" type="button" value = "수정" onclick="location.href='form.jsp?method=modify&id=${idsession}'">
+							<input id="viewbt" type="button" value="삭제" onclick="location.href='deleteok.jsp?id=${idsession}'">
+						</td>
 					</tr>
 				</table>
 			</section>

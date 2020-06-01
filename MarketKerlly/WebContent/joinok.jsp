@@ -17,10 +17,12 @@
 	
 	<c:choose>
 		<c:when test="${ result ne 1}">
-			<c:set var="msg"  value="<script>alert('이미 사용중인 아이디 입니다.')</script> "/>
+			<c:set var="msg"  value="<script>alert('이미 사용중인 아이디 입니다.')</script> " scope="request"/>
+			<c:set var="dto" value="${dto }"  scope="request"/>
+			<jsp:forward page="join.jsp" />
 		</c:when>
 		<c:otherwise>
-		
+			<c:redirect url="login.jsp" />
 		</c:otherwise>
 	</c:choose>
 	

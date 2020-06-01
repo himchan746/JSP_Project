@@ -114,7 +114,7 @@ ${msg }
 					<th colspan="2"><input type="submit" id="buttonLg" value="로그인"></th>
 				</tr>
 				<tr>
-					<th colspan="2"><input type="button" id="buttonJo" value="회원가입" onclick="location.href='join.jsp'"></th>
+					<th colspan="2"><input type="button" id="buttonJo" value="회원가입" onclick="location.href='form.jsp?method=join'"></th>
 				</tr>
 			</table>
 		</form>

@@ -8,6 +8,7 @@ public class memberDTO {
 	private String name;
 	private String depart;
 	private String rank;
+	
 	public String getId() {
 		return id;
 	}

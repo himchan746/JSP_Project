@@ -8,6 +8,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
+
 public class memberDAO {
 	private String id = "jsp", pwd = "1234";
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";

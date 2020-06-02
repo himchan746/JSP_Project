@@ -78,6 +78,7 @@ public class FileDAO {
 				dto.setImg(javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray));
 				dto.setPrice(rs.getInt("pro_price"));
 				dto.setPro_name(rs.getString("pro_name"));
+				dto.setPro_id(rs.getInt("pro_id"));
 				list.add(dto);
 			}
 
@@ -107,6 +108,7 @@ public class FileDAO {
 				dto.setImg(javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray));
 				dto.setPrice(rs.getInt("pro_price"));
 				dto.setPro_name(rs.getString("pro_name"));
+				dto.setPro_id(rs.getInt("pro_id"));
 				list.add(dto);
 			}
 

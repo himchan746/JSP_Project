@@ -192,11 +192,11 @@
 											<div class="bx-viewport">
 												<ul class="list">
 													<c:forEach var="Randomlist" items="${fileDAO.getRandomFile()}">
-													<li><a class="thumba" href="join.jsp">
+													<li><a class="thumba" href="productView.jsp?proId=${Randomlist.pro_id}">
 													 <img src='data:x-image/jpg;base64,${Randomlist.img}' class="thumb"/>
 													</a>
 													<div class="info_goods">
-															<span class="name"> <a class="txt">${Randomlist.pro_name}</a>
+															<span class="name"> <a class="txt" href="productView.jsp?proId=${Randomlist.pro_id}">${Randomlist.pro_name}</a>
 															</span> <span class="price"><fmt:formatNumber value="${Randomlist.price}" pattern="#,###"/>원</span>
 														</div></li>
 													</c:forEach>
@@ -224,11 +224,11 @@
 											<div class="bx-viewport">
 												<ul class="list">
 													<c:forEach var="RecentFile" items="${fileDAO.getRecentFile()}">
-													<li><a class="thumba" href="join.jsp">
+													<li><a class="thumba" href="productView.jsp?proId=${Randomlist.pro_id}">
 													 <img src='data:x-image/jpg;base64,${RecentFile.img}' class="thumb"/>
 													</a>
 														<div class="info_goods">
-															<span class="name"> <a class="txt">${RecentFile.pro_name}</a>
+															<span class="name"> <a class="txt" href="productView.jsp?proId=${Randomlist.pro_id}">${RecentFile.pro_name}</a>
 															</span> <span class="price"><fmt:formatNumber value="${RecentFile.price}" pattern="#,###"/>원</span>
 														</div></li>
 													</c:forEach>

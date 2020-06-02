@@ -158,9 +158,20 @@
 </style>
 </head>
 <body>
+<<<<<<< HEAD
 	<div id="wrap">
 		<div>
 			<%@include file="header.jsp"%>
+=======
+<%@ include file="header.jsp" %>
+	<section>
+		<div id="mainpic">사진 넣어주세요</div>
+		<div id="howAboutThis">
+			<div><h3>이 상품 어때요?</h3></div>
+			<div id = "article1">
+			
+			</div>
+>>>>>>> branch 'master' of https://github.com/himchan746/JSP_Project.git
 		</div>
 		<section>
 			<!-- section1 -->

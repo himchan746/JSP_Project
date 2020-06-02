@@ -83,7 +83,7 @@ public class CustomerDAO {
 	}
 
 	public void delete(String id) throws SQLException {
-		ps = con.prepareStatement("delete customer where id = ?");
+		ps = con.prepareStatement("delete from customer where id = ?");
 		ps.setString(1, id);
 		try {
 			ps.executeUpdate();

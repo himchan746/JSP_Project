@@ -13,8 +13,8 @@ public class ProductInfoDAO {
 	
 	public ProductInfoDAO() {
 		try {
-			Class.forName("oracle.jdbc.driver.OracleDriver");
-			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "ajh","1234");
+			Class.forName("oracle.jdbc.OracleDriver");
+			con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:xe", "jsp","1234");
 		} catch (ClassNotFoundException e) {
 			System.out.println("driver not found");
 		} catch (SQLException e) {

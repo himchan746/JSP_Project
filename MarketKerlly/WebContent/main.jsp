@@ -158,20 +158,10 @@
 </style>
 </head>
 <body>
-<<<<<<< HEAD
 	<div id="wrap">
 		<div>
-			<%@include file="header.jsp"%>
-=======
 <%@ include file="header.jsp" %>
 	<section>
-		<div id="mainpic">사진 넣어주세요</div>
-		<div id="howAboutThis">
-			<div><h3>이 상품 어때요?</h3></div>
-			<div id = "article1">
-			
-			</div>
->>>>>>> branch 'master' of https://github.com/himchan746/JSP_Project.git
 		</div>
 		<section>
 			<!-- section1 -->
@@ -181,7 +171,7 @@
 				</div>
 			</div>
 			<div>
-				<!-- section2 -->
+				<!-- section2 이 상품 어때요? -->
 				<div id="mainmiddleList1">
 					<div id="mainmiddleTitle">
 						<h2>이 상품 어때요?</h2>
@@ -195,39 +185,37 @@
 										<div class="bx-wrapper">
 											<div class="bx-viewport">
 												<ul class="list">
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
+													<li>
+														<a class="thumba" href="productView.jsp?proId=1">
+															<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+														</a>
 														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
+															<span class="name"> <a class="txt" href="productView.jsp?proId=1">상품 1</a>
+															</span> <span class="price">4,900원</span>
+														</div>
+													</li>
+													<li>
+														<a class="thumba" href="productView.jsp?proId=2">
+															<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+														</a>
+														<div class="info_goods">
+															<span class="name"> 
+														<a class="txt" href="productView.jsp?proId=2">상품 2
+														</a>
 															</span> <span class="price">4,900원</span>
 														</div></li>
-													<li><a class="thumba" href="join.jsp">
+													<li><a class="thumba" href="productView.jsp?proId=3">
 													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
 													</a>
 														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
+															<span class="name"> <a class="txt" href="productView.jsp?proId=3">상품 3</a>
 															</span> <span class="price">4,900원</span>
 														</div></li>
-													<li><a class="thumba" href="join.jsp">
+													<li><a class="thumba" href="productView.jsp?proId=4">
 													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
 													</a>
 														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
+															<span class="name"> <a class="txt" href="productView.jsp?proId=4">상품 4</a>
 															</span> <span class="price">4,900원</span>
 														</div></li>
 												</ul>
@@ -239,7 +227,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- section2 -->
+				<!-- section3 -->
 				<div id="mainmiddleList2">
 					<div id="mainmiddleTitle">
 						<h2>이 상품 어때요?</h2>
@@ -297,7 +285,7 @@
 						</div>
 					</div>
 				</div>
-				<!-- section3 -->
+				<!-- section4 -->
 				<div id="mainmiddleList1">
 					<div id="mainmiddleTitle">
 						<h2>이 상품 어때요?</h2>

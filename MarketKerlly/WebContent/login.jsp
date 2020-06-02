@@ -1,4 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
 <html>
@@ -12,6 +13,7 @@
 
 #idandpw {
 	font-size: 15px;
+	
 	color: black;
 	text-decoration: none;
 }
@@ -97,6 +99,9 @@
 </head>
 <body>
 ${msg }
+
+<c:choose>
+	<c:when test="${empty idsession }">
 	<%@include file="header.jsp"%>
 	<section id="loginwrap">
 		<form action="loginChk.jsp" method="post">
@@ -120,5 +125,10 @@ ${msg }
 		</form>
 	</section>
 	<%@include file="footer.jsp"%>
+</c:when>
+	<c:otherwise>
+		<c:redirect url="main.jsp" />		
+	</c:otherwise>
+</c:choose>
 </body>
 </html>

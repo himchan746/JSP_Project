@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>문제지</title>
+<title>마켓케리::여기로와 모든게 다있어!!</title>
 
 <style type="text/css">
 /* ---------------------------------------------- 모바일 */
@@ -31,17 +31,17 @@
 	font-size: 10px;
 	padding: 5px;
 	border-radius: 4px;
-	border: 1px solid #FF3366;
+	border: 1px solid purple;
 }
 
 #topul li:hover {
-	background: #FF3366;
+	background: purple;
 }
 
 #topul li a {
 	font-size: 13px;
 	text-decoration: none;
-	color: #FF3366;
+	color: purple;
 }
 
 #topul li a:hover {
@@ -51,7 +51,7 @@
 /* ---------------------------------------------- middle */
 #middle {
 	text-align: center;
-	color: #FF3366;
+	color: purple;
 	font-size: 30px;
 }
 
@@ -72,13 +72,14 @@
 							<li><a href="join.jsp">회원가입</a></li>
 						</c:when>
 						<c:otherwise>
+							<li><a href="view.jsp?id=${idsession }">${idsession }</a> 님</li>
 							<li><a href="logout.jsp">로그아웃</a></li>
 						</c:otherwise>
 					</c:choose>
 				</ul>
 			</div>
 			<div id="middle">
-				<h1>CARE WEB</h1>
+				<h1>Market Kerlly</h1>
 			</div>
 		</div>
 	</header>

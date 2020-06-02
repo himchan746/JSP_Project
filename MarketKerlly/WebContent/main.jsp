@@ -1,196 +1,309 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+   pageEncoding="UTF-8"%>
+   <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+   <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
-<title>마켓케리::여기로와 모든게 다있어!!</title>
+<title>Insert title here</title>
 
 <style type="text/css">
-/* ---------------------------------------------- 모바일 */
-
-/* ---------------------------------------------- basic */
-#headerdiv {
-   display: flex;
-   flex-flow: column;
-   margin: 0 auto;
-   text-align: right;
-}
-
-/* ---------------------------------------------- top */
-#top ul {
-   text-align: right;
-}
-
-#topul li {
-   margin: 3px;
-   display: inline;
+* {
    list-style: none;
-   font-size: 10px;
-   padding: 5px;
-   border-radius: 4px;
-   border: 1px solid purple;
 }
 
-#topul li:hover {
-   background: purple;
+.thumb_goods {
+   width: 100%;
+   height: 370px;
+   background-repeat: no-repeat;
+   background-position: 50% 50%;
+   background-size: auto auto;
+   font-size: 0;
+   line-height: 0;
+   background: pink;
 }
 
-#topul li a {
-   font-size: 13px;
-   text-decoration: none;
-   color: purple;
+#mainImageBox {
+   height: 400px;
 }
 
-#topul li a:hover {
-   color: white;
+#mainImageView {
+   width: 100%;
+   height: 400px;
+   margin: auto;
 }
 
-/* ---------------------------------------------- middle */
-#middle {
-   text-align: center;
-   color: purple;
-   font-size: 30px;
+#mainImageView img {
+   width: 100%;
+   height: 100%;
 }
 
-#middle {
-   text-align: center;
-}
-
-.headerbar {
-   display: flex;
-   height: 40px;
+#mainmiddleList1 {
+   width: 100%;
    margin: 0 auto;
-   text-align: center;
+   background: white;
 }
 
-.tag {
-   width: 200px;
-   padding: 8px 0px;
-   border-left: 1px solid purple;
-   transition : 0.8s;
+#mainmiddleList2 {
+   width: 100%;
+   margin: 0 auto;
+   background: #f5F5dc;
 }
-.tag:hover{
-   background: purple;
-   border-radius: 15px;
-   color: white;
-   cursor: pointer;
-}
-.headerbar div a:hover{
-   color: white;
-}
-.headerbar div a {
-   text-decoration: none;
-   font-size: 15px;
+
+#mainmiddleTitle {
+   padding: 79px 0 35px;
    text-align: center;
-   font-weight: 14px;
-   width:30px;
+   color: #333333;
 }
-.seartxtbox{
-   padding-top: 6px;
-   width : 250px;
-   border: 2px solid purple;
-   border-radius: 23px;
-   padding: 1px 5px;
+
+#mainMdVeiw {
+   width: 1050px;
+   margin: 0 auto;
+   height: 506px;
+   border: 1px solid black;
 }
-.searchtext {
-   width : 190px;
-   margin-left:3px;
-   height:30px;
-   font-size : 15px;
-   padding-left: 20px;
-   border: none;
-   outline: none;
-   border-radius: 10px;
+
+#MdVeiw {
+   max-width: 1050px;
+   margin: 0px auto;
 }
-#catetitle{
+
+#MdViewBox {
    display: flex;
-   padding-top: 3px;
+   width: 100%;
 }
-.seachbt{
-   padding-top:5px;
-   outline: none;
-   border: none;
-   background: none;
+
+#kurlyMain {
+   width: 100%;
+   opacity: 1;
+}
+
+.list_goods {
+   width: 1050px;
+   height: 506px;
+   margin: 0 auto;
+}
+
+.bx-wrapper {
+   max-width: 1050px;
+   margin: 0px auto;
+}
+
+.bx-viewport {
+   width: 100%;
+   overflow: hidden;
+   position: relative;
+   height: 506px;
+}
+
+.list {
+   width: 1015%;
+   position: relative;
+   transition-duration: 0s;
+   transform: translate3d(-40px, 0px, 0px);
+}
+
+.list li {
+   float: left;
+   list-style: none;
+   position: relative;
+   width: 249px;
+   margin-right: 18px;
+}
+
+.thumb_goods {
+   position: relative;
+   display: block;
+   overflow: hidden;
    cursor: pointer;
+   overflow: hidden;
 }
-.catatxt{
-   margin: 5px 10px;
+
+.thumb {
+   display: block;
+   margin: 0 auto;
+   background-position: 50% 50%;
+   background-size: cover;
+   transform: scale(1);
+   transition: all 0.3s ease-in-out;
+   width: 249px;
+   height: 320px;
 }
-#searchimage{
-   width: 20px;
-   height: 20px;
+
+#name {
+   background-color: black;
+   overflow: hidden;
+   max-height: 50px;
+   margin-top: 30px;
+   text-overflow: ellipsis;
 }
-#shopimage{
-   margin-left: 30px;
-   width: 40px;
-   height: 40px;
+
+.txt {
+   font-size: 16px;
+   line-height: 23px;
+   color: #333333;
 }
-#cateImage{
-   width: 30px;
-   height: 30px;
-   margin: 0px 15px;
+
+.price {
+   display: block;
+   color: #333333;
+   font-weight: 700;
+   font-size: 16px;
+   line-height: 20px;
 }
-.shopping {
-   width: 50px;
-   padding-left: 3px;
+
+.info_goods {
+   padding-top: 10px;
+}
+
+.thumba {
    cursor: pointer;
 }
 </style>
 </head>
 <body>
-   <fmt:requestEncoding value="utf-8" />
-   <header>
-      <div id="headerdiv">
-         <div Class="top">
-            <ul id="topul">
-               <c:choose>
-                  <c:when test="${sessionScope.idsession == null }">
-                     <li><a href="login.jsp">로그인</a></li>
-                     <li><a href="join.jsp">회원가입</a></li>
-                  </c:when>
-                  <c:otherwise>
-                     <li><a href="view.jsp?id=${idsession }">${idsession }</a> 님</li>
-                     <li><a href="logout.jsp">로그아웃</a></li>
-                  </c:otherwise>
-               </c:choose>
-            </ul>
+   <jsp:useBean id="fileDAO" class="file.FileDAO"/>
+
+   <div id="wrap">
+      <div>
+         <%@include file="header.jsp"%>
+      </div>
+      <section>
+         <!-- section1 -->
+         <div id="mainImageBox">
+            <div id="mainImageView">
+               <img alt="" src="/MarketKerlly/pic/icecream.png">
+            </div>
          </div>
-         <div id="middle">
-            <h1>Market Kerlly</h1>
-         </div>
-         <div class="headerbar">
-            <div id="catetitle" class="tag">
-               <div><img id = "cateImage"src="https://cdn4.iconfinder.com/data/icons/wirecons-free-vector-icons/32/menu-alt-512.png"></div>
-               <div class="catatxt"><a class="cate" href="#">전체 카테로그</a></div>
-            </div>
-            <div  class="tag">
-               <a class="new" href="#">신상품</a>
-            </div>
-            <div class="tag">
-               <a class="hot" href="#">핫상품</a>
-            </div>
-            <div class="tag">
-               <a class="today" href="#">오늘신상품</a>
-            </div>
-            <div class="searchbox">
-               <form action="#">
-                  <div class="seartxtbox" style="display: flex;">
-                     <div><input class="searchtext" type="text"></div>
-                     <div class="searchdivbt"><button class = "seachbt"type="submit">
-                        <img id="searchimage" src="https://cdn1.iconfinder.com/data/icons/free-98-icons/32/search-512.png">
-                     </button>
+         <div>
+            <!-- section2 이 상품 어때요? -->
+            <div id="mainmiddleList1">
+               <div id="mainmiddleTitle">
+                  <h2>이 상품 어때요?</h2>
+               </div>
+               <!--  -->
+               <div id="kurlyMain">
+                  <div>
+                     <div class="main_type2">
+                        <div class="product_list">
+                           <div class="list_goods">
+                              <div class="bx-wrapper">
+                                 <div class="bx-viewport">
+                                    <ul class="list">
+                                       <c:forEach var="Randomlist" items="${fileDAO.getRandomFile()}">
+                                       <li><a class="thumba" href="join.jsp">
+                                        <img src='data:x-image/jpg;base64,${Randomlist.img}' class="thumb"/>
+                                       </a>
+                                       <div class="info_goods">
+                                             <span class="name"> <a class="txt">${Randomlist.pro_name}</a>
+                                             </span> <span class="price"><fmt:formatNumber value="${Randomlist.price}" pattern="#,###"/>원</span>
+                                          </div></li>
+                                       </c:forEach>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
                      </div>
                   </div>
-               </form>
+               </div>
             </div>
-            <div class="shopping">
-               <img id="shopimage"src="https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_cart-512.png">
+            <!-- section3 -->
+            <div id="mainmiddleList2">
+               <div id="mainmiddleTitle">
+                  <h2>최근 입고 상품</h2>
+               </div>
+               <!--  -->
+               <div id="kurlyMain">
+                  <div>
+                     <div class="main_type2">
+                        <div class="product_list">
+                           <div class="list_goods">
+                              <div class="bx-wrapper">
+                                 <div class="bx-viewport">
+                                    <ul class="list">
+                                       <c:forEach var="RecentFile" items="${fileDAO.getRecentFile()}">
+                                       <li><a class="thumba" href="join.jsp">
+                                        <img src='data:x-image/jpg;base64,${RecentFile.img}' class="thumb"/>
+                                       </a>
+                                          <div class="info_goods">
+                                             <span class="name"> <a class="txt">${RecentFile.pro_name}</a>
+                                             </span> <span class="price"><fmt:formatNumber value="${RecentFile.price}" pattern="#,###"/>원</span>
+                                          </div></li>
+                                       </c:forEach>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <!-- section4 -->
+            <div id="mainmiddleList1">
+               <div id="mainmiddleTitle">
+                  <h2>이 상품 어때요?</h2>
+               </div>
+               <!--  -->
+               <div id="kurlyMain">
+                  <div>
+                     <div class="main_type2">
+                        <div class="product_list">
+                           <div class="list_goods">
+                              <div class="bx-wrapper">
+                                 <div class="bx-viewport">
+                                    <ul class="list">
+                                       <li><a class="thumba" href="join.jsp"> <img
+                                             class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+                                       </a>
+                                          <div class="info_goods">
+                                             <span class="name"> <a class="txt">상품 1</a>
+                                             </span> <span class="price">4,900원</span>
+                                          </div></li>
+                                       <li><a class="thumba" href="join.jsp"> <img
+                                             class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+                                       </a>
+                                          <div class="info_goods">
+                                             <span class="name"> <a class="txt">상품 1</a>
+                                             </span> <span class="price">4,900원</span>
+                                          </div></li>
+                                       <li><a class="thumba" href="join.jsp"> <img
+                                             class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+                                       </a>
+                                          <div class="info_goods">
+                                             <span class="name"> <a class="txt">상품 1</a>
+                                             </span> <span class="price">4,900원</span>
+                                          </div></li>
+                                       <li><a class="thumba" href="join.jsp"> <img
+                                             class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+                                       </a>
+                                          <div class="info_goods">
+                                             <span class="name"> <a class="txt">상품 1</a>
+                                             </span> <span class="price">4,900원</span>
+                                          </div></li>
+                                       <li><a class="thumba" href="join.jsp"> <img
+                                             class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+                                       </a>
+                                          <div class="info_goods">
+                                             <span class="name"> <a class="txt">상품 1</a>
+                                             </span> <span class="price">4,900원</span>
+                                          </div></li>
+                                    </ul>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
             </div>
          </div>
-      </div>
-   </header>
+      </section>
+   </div>
+   <div>
+      <%@include file="footer.jsp"%>
+   </div>
 </body>
 </html>

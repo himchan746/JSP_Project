@@ -44,7 +44,7 @@ function plus() {
 				<td></td>
 			</tr>
 			<tr>
-				<td colspan="2">총 상품 금액 : ${pdto.proPrice } 원</td>
+				<td colspan="2">총 상품 금액 : ${pdto.proPrice * count} 원</td>
 			</tr>
 		</table>
 		<input type="button" value="장바구니 담기" onclick="addCart()">

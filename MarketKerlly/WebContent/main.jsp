@@ -158,20 +158,10 @@
 </style>
 </head>
 <body>
-<<<<<<< HEAD
+<!-- <<<<<<< HEAD -->
 	<div id="wrap">
 		<div>
 			<%@include file="header.jsp"%>
-=======
-<%@ include file="header.jsp" %>
-	<section>
-		<div id="mainpic">사진 넣어주세요</div>
-		<div id="howAboutThis">
-			<div><h3>이 상품 어때요?</h3></div>
-			<div id = "article1">
-			
-			</div>
->>>>>>> branch 'master' of https://github.com/himchan746/JSP_Project.git
 		</div>
 		<section>
 			<!-- section1 -->
@@ -242,7 +232,7 @@
 				<!-- section2 -->
 				<div id="mainmiddleList2">
 					<div id="mainmiddleTitle">
-						<h2>이 상품 어때요?</h2>
+						<h2>오늘의 신상품</h2>
 					</div>
 					<!--  -->
 					<div id="kurlyMain">
@@ -300,7 +290,7 @@
 				<!-- section3 -->
 				<div id="mainmiddleList1">
 					<div id="mainmiddleTitle">
-						<h2>이 상품 어때요?</h2>
+						<h2>지금 가장 핫한 상품</h2>
 					</div>
 					<!--  -->
 					<div id="kurlyMain">

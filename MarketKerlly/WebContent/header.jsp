@@ -9,9 +9,7 @@
 <title>마켓케리::여기로와 모든게 다있어!!</title>
 
 <style type="text/css">
-/* ---------------------------------------------- 모바일 */
 
-/* ---------------------------------------------- basic */
 #headerdiv {
 	display: flex;
 	flex-flow: column;
@@ -19,7 +17,6 @@
 	text-align: right;
 }
 
-/* ---------------------------------------------- top */
 #top ul {
 	text-align: right;
 }
@@ -48,7 +45,6 @@
 	color: white;
 }
 
-/* ---------------------------------------------- middle */
 #middle {
 	text-align: center;
 	color: purple;

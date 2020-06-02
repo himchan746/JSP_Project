@@ -1,4 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -41,6 +44,7 @@
 	margin: 0 auto;
 	background: white;
 }
+
 #mainmiddleList2 {
 	width: 100%;
 	margin: 0 auto;
@@ -110,7 +114,8 @@
 
 .thumb_goods {
 	position: relative;
-	display: block; overflow : hidden;
+	display: block;
+	overflow: hidden;
 	cursor: pointer;
 	overflow: hidden;
 }
@@ -130,7 +135,7 @@
 	background-color: black;
 	overflow: hidden;
 	max-height: 50px;
-	margin-top: 30px; 
+	margin-top: 30px;
 	text-overflow: ellipsis;
 }
 
@@ -150,18 +155,19 @@
 
 .info_goods {
 	padding-top: 10px;
-
 }
-.thumba{
+
+.thumba {
 	cursor: pointer;
 }
 </style>
 </head>
 <body>
+	<jsp:useBean id="fileDAO" class="file.FileDAO"/>
+
 	<div id="wrap">
 		<div>
-<%@ include file="header.jsp" %>
-	<section>
+			<%@include file="header.jsp"%>
 		</div>
 		<section>
 			<!-- section1 -->
@@ -185,39 +191,15 @@
 										<div class="bx-wrapper">
 											<div class="bx-viewport">
 												<ul class="list">
-													<li>
-														<a class="thumba" href="productView.jsp?proId=1">
-															<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-														</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt" href="productView.jsp?proId=1">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div>
-													</li>
-													<li>
-														<a class="thumba" href="productView.jsp?proId=2">
-															<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-														</a>
-														<div class="info_goods">
-															<span class="name"> 
-														<a class="txt" href="productView.jsp?proId=2">상품 2
-														</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
-													<li><a class="thumba" href="productView.jsp?proId=3">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+													<c:forEach var="Randomlist" items="${fileDAO.getRandomFile()}">
+													<li><a class="thumba" href="join.jsp">
+													 <img src='data:x-image/jpg;base64,${Randomlist.img}' class="thumb"/>
 													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt" href="productView.jsp?proId=3">상품 3</a>
-															</span> <span class="price">4,900원</span>
+													<div class="info_goods">
+															<span class="name"> <a class="txt">${Randomlist.pro_name}</a>
+															</span> <span class="price"><fmt:formatNumber value="${Randomlist.price}" pattern="#,###"/>원</span>
 														</div></li>
-													<li><a class="thumba" href="productView.jsp?proId=4">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt" href="productView.jsp?proId=4">상품 4</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
+													</c:forEach>
 												</ul>
 											</div>
 										</div>
@@ -230,7 +212,7 @@
 				<!-- section3 -->
 				<div id="mainmiddleList2">
 					<div id="mainmiddleTitle">
-						<h2>이 상품 어때요?</h2>
+						<h2>최근 입고 상품</h2>
 					</div>
 					<!--  -->
 					<div id="kurlyMain">
@@ -241,41 +223,15 @@
 										<div class="bx-wrapper">
 											<div class="bx-viewport">
 												<ul class="list">
+													<c:forEach var="RecentFile" items="${fileDAO.getRecentFile()}">
 													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+													 <img src='data:x-image/jpg;base64,${RecentFile.img}' class="thumb"/>
 													</a>
 														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
+															<span class="name"> <a class="txt">${RecentFile.pro_name}</a>
+															</span> <span class="price"><fmt:formatNumber value="${RecentFile.price}" pattern="#,###"/>원</span>
 														</div></li>
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
+													</c:forEach>
 												</ul>
 											</div>
 										</div>
@@ -299,36 +255,36 @@
 										<div class="bx-wrapper">
 											<div class="bx-viewport">
 												<ul class="list">
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+													<li><a class="thumba" href="join.jsp"> <img
+															class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
 													</a>
 														<div class="info_goods">
 															<span class="name"> <a class="txt">상품 1</a>
 															</span> <span class="price">4,900원</span>
 														</div></li>
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+													<li><a class="thumba" href="join.jsp"> <img
+															class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
 													</a>
 														<div class="info_goods">
 															<span class="name"> <a class="txt">상품 1</a>
 															</span> <span class="price">4,900원</span>
 														</div></li>
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+													<li><a class="thumba" href="join.jsp"> <img
+															class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
 													</a>
 														<div class="info_goods">
 															<span class="name"> <a class="txt">상품 1</a>
 															</span> <span class="price">4,900원</span>
 														</div></li>
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+													<li><a class="thumba" href="join.jsp"> <img
+															class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
 													</a>
 														<div class="info_goods">
 															<span class="name"> <a class="txt">상품 1</a>
 															</span> <span class="price">4,900원</span>
 														</div></li>
-													<li><a class="thumba" href="join.jsp">
-													<img class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
+													<li><a class="thumba" href="join.jsp"> <img
+															class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
 													</a>
 														<div class="info_goods">
 															<span class="name"> <a class="txt">상품 1</a>
@@ -347,7 +303,7 @@
 		</section>
 	</div>
 	<div>
-	<%@include file="footer.jsp"%>
+		<%@include file="footer.jsp"%>
 	</div>
 </body>
 </html>

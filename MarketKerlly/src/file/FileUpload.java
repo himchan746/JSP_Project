@@ -31,11 +31,16 @@ public class FileUpload {
 			System.out.println("fileLength : " + fileLength);
 			InputStream is = new FileInputStream(file);
 
-			String sql = "insert into pds (id, filename, files) values (?,?,?)";
+			String sql = "insert into productinfo values (?,?,?,?,?,?,sysdate)";
 			ps = con.prepareStatement(sql);
+			
 			ps.setInt(1, maxID);
-			ps.setString(2, fileName);
-			ps.setBinaryStream(3, is, fileLength);
+			ps.setString(2, "폭립");
+			ps.setInt(3, 2340);
+			ps.setInt(4, 17900);
+			ps.setBinaryStream(5, is, fileLength);
+			ps.setInt(6, 0);
+			
 			ps.executeUpdate();
 			ps.close();
 			con.close();
@@ -49,7 +54,7 @@ public class FileUpload {
 
 		int maxID = 0;
 		Statement stmt = con.createStatement();
-		ResultSet result = stmt.executeQuery("select max(id) from pds");
+		ResultSet result = stmt.executeQuery("select max(pro_id) from productinfo");
 		while (result.next()) {
 			maxID = result.getInt(1);
 		}
@@ -59,9 +64,15 @@ public class FileUpload {
 	}
 
 	public static void main(String[] args) {
-		String fileName = "C:\\Users\\인호\\Desktop\\test.jpg";
+		String fileName = "C:\\Users\\인호\\Desktop\\DBImage\\폭립.jpg";
 		FileUpload fileup = new FileUpload(fileName);
-		System.out.println("성공");
+		
+		
+		
+		
+		
+		
+		
 
 	}
 

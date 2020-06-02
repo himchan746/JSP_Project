@@ -1,6 +1,5 @@
 package customer;
 
-
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -51,6 +50,7 @@ public class CustomerDAO {
 		}
 		return arr;
 	}
+
 	public int join(CustomerDTO dto) throws SQLException {
 		int result = 0;
 		ps = con.prepareStatement("insert into customer values (?,?,?,?,?)");
@@ -60,14 +60,15 @@ public class CustomerDAO {
 		ps.setString(4, dto.getAddr());
 		ps.setString(5, dto.getTel());
 		try {
-		result =  ps.executeUpdate();
-		}catch(SQLIntegrityConstraintViolationException e){
-	
+			result = ps.executeUpdate();
+		} catch (SQLIntegrityConstraintViolationException e) {
+
 		}
 		return result;
 	}
+
 	public int modify(CustomerDTO dto) throws SQLException {
-		int result=0;
+		int result = 0;
 		ps = con.prepareStatement("update customer set pwd=?, name=?, addr=?, tel=? where id = ?");
 		ps.setString(1, dto.getPwd());
 		ps.setString(2, dto.getName());
@@ -75,26 +76,19 @@ public class CustomerDAO {
 		ps.setString(4, dto.getTel());
 		ps.setString(5, dto.getId());
 		try {
-		result = ps.executeUpdate();
-		}catch(SQLException e) {}
+			result = ps.executeUpdate();
+		} catch (SQLException e) {
+		}
 		return result;
 	}
-	
+
 	public void delete(String id) throws SQLException {
 		ps = con.prepareStatement("delete customer where id = ?");
 		ps.setString(1, id);
 		try {
 			ps.executeUpdate();
-		} catch(SQLException e) {}
-	} 
+		} catch (SQLException e) {
+		}
+	}
+
 }
-
-
-
-
-
-
-
-
-
-

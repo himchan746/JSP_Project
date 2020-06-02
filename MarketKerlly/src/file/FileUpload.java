@@ -1,4 +1,4 @@
-package exam;
+package file;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -10,7 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-public class BLOBInputTest {
+public class FileUpload {
 
 	// 전역변수선언
 	private String id = "jsp", pwd = "1234";
@@ -20,7 +20,7 @@ public class BLOBInputTest {
 	private PreparedStatement ps;
 	
 
-	public BLOBInputTest(String fileName) {
+	public FileUpload(String fileName) {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
 			con = DriverManager.getConnection(url, id, pwd);
@@ -59,8 +59,8 @@ public class BLOBInputTest {
 	}
 
 	public static void main(String[] args) {
-		String fileName = "C:\\Users\\인호\\Desktop\\dog.gif";
-		BLOBInputTest fileup = new BLOBInputTest(fileName);
+		String fileName = "C:\\Users\\인호\\Desktop\\test.jpg";
+		FileUpload fileup = new FileUpload(fileName);
 		System.out.println("성공");
 
 	}

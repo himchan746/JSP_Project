@@ -12,6 +12,14 @@
 		<c:when test="${not empty idsession }">
 				<jsp:useBean id="basketDao" class="buy.BasketDAO"/>
 				<c:set var="list" value="${basketDao.basketList(idsession)}"/>
+				<c:forEach var="buyDto" items="${list}">
+				${buyDto.cus_id }<br>
+				${buyDto.pro_id }<br>
+				${buyDto.pro_count}<br>
+				${buyDto.price }<br>
+				<hr>
+				</c:forEach>
+				<a href="#">구매페이지로 가야합니다 여러분 ~!</a>
 		</c:when>
 		<c:otherwise>
 			<c:set var="msg" value="<script>alert('먼저 로그인 해주세요')</script>"

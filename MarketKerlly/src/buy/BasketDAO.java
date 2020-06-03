@@ -26,7 +26,7 @@ public class BasketDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, cus_id);
-			ps.executeQuery();
+			rs=ps.executeQuery();
 			while(rs.next()) {
 				BuyDTO bd = new BuyDTO();
 				bd.setCus_id(rs.getString("cus_id"));

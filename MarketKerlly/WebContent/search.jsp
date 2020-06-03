@@ -139,6 +139,8 @@
 						<c:set var="totalList" value="${fileDAO.getTotalList(param.search)}" />
 						<c:choose>
 							<c:when test="${filelist.size() ne 0}">
+							${filelist.size() }개의 상품이 검색되었습니다.
+							<hr>
 								<ul class="list">
 									<c:forEach var="search" items="${filelist}">
 										<li><a class="thumba" href="productView.jsp?proId=${search.pro_id}">

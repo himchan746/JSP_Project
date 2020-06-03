@@ -117,14 +117,49 @@ public class FileDAO {
 		return list;
 	}
 
-	public List<String> getHotFile() {
-		List<String> list = new ArrayList<String>();
+	public List<FileDTO> getHotFile() {
+	      List<FileDTO> list = new ArrayList<FileDTO>();
+	      int clickCount = 0;
+	      try {
+	         String sql = "select * from (select * from productinfo order by click desc) where rownum<=4";
+	         ps = con.prepareStatement(sql);
+	         rs = ps.executeQuery();
+	         while (rs.next()) {
+	            FileDTO dto = new FileDTO();
+	            InputStream in = rs.getBinaryStream("img");
+	            BufferedImage bimg = ImageIO.read(in);
+	            in.close();
+
+	            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+	            ImageIO.write(bimg, "jpg", baos);
+	            baos.flush();
+	            byte[] imageInByteArray = baos.toByteArray();
+	            baos.close();
+	            dto.setImg(javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray));
+	            dto.setPrice(rs.getInt("pro_price"));
+	            dto.setPro_name(rs.getString("pro_name"));
+	            dto.setPro_id(rs.getInt("pro_id"));
+	            list.add(dto);
+	            
+	            clickCount++;
+	            if(clickCount>3) break;
+	         }
+
+	      } catch (Exception e) {
+	         e.printStackTrace();
+	      }
+	      return list;
+	   }
+	
+	public List<FileDTO> getSearchFile(String search) {
+		List<FileDTO> list = new ArrayList<FileDTO>();
 		try {
-			String sql = "select * from pds";
+			String sql = "select * from PRODUCTINFO where pro_name like '%"+search+"%' order by pro_id asc";
 			ps = con.prepareStatement(sql);
 			rs = ps.executeQuery();
 			while (rs.next()) {
-				InputStream in = rs.getBinaryStream("files");
+				FileDTO dto = new FileDTO();
+				InputStream in = rs.getBinaryStream("img");
 				BufferedImage bimg = ImageIO.read(in);
 				in.close();
 
@@ -133,7 +168,11 @@ public class FileDAO {
 				baos.flush();
 				byte[] imageInByteArray = baos.toByteArray();
 				baos.close();
-				list.add(javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray));
+				dto.setImg(javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray));
+				dto.setPrice(rs.getInt("pro_price"));
+				dto.setPro_name(rs.getString("pro_name"));
+				dto.setPro_id(rs.getInt("pro_id"));
+				list.add(dto);
 			}
 
 		} catch (Exception e) {
@@ -141,5 +180,4 @@ public class FileDAO {
 		}
 		return list;
 	}
-
 }

@@ -10,6 +10,7 @@ public class ProductInfoDTO {
 	private int proClick;
 	private Timestamp proRegTime;
 	private byte[] proImg;
+	
 	public byte[] getProImg() {
 		return proImg;
 	}

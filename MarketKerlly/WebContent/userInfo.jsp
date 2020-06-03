@@ -7,34 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-
-<style type="text/css">
-#viewsection {
-	height : 600px;
-}
-
-#viewtable {
-	margin: auto;
-	width: 400px;
-	height : 300px;
-	text-align: center;
-	color: #FF3366;
-}
-#nametitle{
-	background: #FF3366;
-	color: white;
-
-}
-#viewbt{
-	background: #FF3366;
-	width: 250px;
-	height: 30px;
-	border-radius: 10px;
-	color: white;	
-}
-</style>
-
-
+	<link href="css/userInfo.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<c:choose>

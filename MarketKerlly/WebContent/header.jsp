@@ -178,10 +178,10 @@
                <a class="today" href="#">오늘신상품</a>
             </div>
             <div class="searchbox">
-               <form action="#">
+               <form action="search.jsp">
                   <div class="seartxtbox" style="display: flex;">
-                     <div><input class="searchtext" type="text"></div>
-                     <div class="searchdivbt"><button class = "seachbt"type="submit">
+                     <div><input class="searchtext" type="text" name="search"></div>
+                     <div class="searchdivbt"><button class ="seachbt"type="submit">
                         <img id="searchimage" src="https://cdn1.iconfinder.com/data/icons/free-98-icons/32/search-512.png">
                      </button>
                      </div>

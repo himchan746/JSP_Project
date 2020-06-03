@@ -5,6 +5,7 @@ public class FileDTO {
 	private String img;
 	private String pro_name;
 	private int pro_id;
+	private String pro_group;
 
 	public int getPro_id() {
 		return pro_id;

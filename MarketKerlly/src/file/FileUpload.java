@@ -30,7 +30,9 @@ public class FileUpload {
 			int fileLength = (int) file.length();
 			System.out.println("fileLength : " + fileLength);
 			InputStream is = new FileInputStream(file);
-
+			
+			String arr[] = new String[20];
+			
 			String sql = "insert into productinfo values (?,?,?,?,?,?,sysdate)";
 			ps = con.prepareStatement(sql);
 			

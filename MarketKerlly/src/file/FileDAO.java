@@ -25,22 +25,21 @@ public class FileDAO {
 	private String b64 ;
 
 	public FileDAO() throws Exception {
-		Class.forName("oracle.jdbc.OracleDriver");
+		Class.forName("oracle.jdbc.driver.OracleDriver");
 		con = DriverManager.getConnection(url, id, pwd);
 	}
 
 	public int[] getRandom(Connection con) throws SQLException {
-
 		int maxID = 0;
 		Statement stmt = con.createStatement();
 		ResultSet result = stmt.executeQuery("select max(pro_id) from productinfo");
 		while (result.next()) {
 			maxID = result.getInt(1);
 		}
+		System.out.println(maxID);
 		result.close();
 		stmt.close();
 		int cntarr[] = new int[4];
-
 		for (int i = 0; i < 4; i++) {
 			int cnt = (int) ((Math.random() * maxID) + 1);
 			cntarr[i] = cnt;

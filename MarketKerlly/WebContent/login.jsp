@@ -25,6 +25,7 @@
 }
 
 #logintable tr {
+
 	height: 60px;
 }
 

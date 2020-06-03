@@ -177,12 +177,12 @@
 				</div>
 			</div>
 			<div>
-				<!-- section2 이 상품 어때요? -->
+				section2 이 상품 어때요?
 				<div id="mainmiddleList1">
 					<div id="mainmiddleTitle">
 						<h2>이 상품 어때요?</h2>
 					</div>
-					<!--  -->
+					
 					<div id="kurlyMain">
 						<div>
 							<div class="main_type2">
@@ -217,12 +217,12 @@
 						</div>
 					</div>
 				</div>
-				<!-- section3 -->
+				section3
 				<div id="mainmiddleList2">
 					<div id="mainmiddleTitle">
 						<h2>최근 입고 상품</h2>
 					</div>
-					<!--  -->
+					
 					<div id="kurlyMain">
 						<div>
 							<div class="main_type2">
@@ -257,12 +257,12 @@
 						</div>
 					</div>
 				</div>
-				<!-- section4 -->
+				section4
 				<div id="mainmiddleList1">
 					<div id="mainmiddleTitle">
 						<h2>Hot 상품</h2>
 					</div>
-					<!--  -->
+					
 					<div id="kurlyMain">
 						<div>
 							<div class="main_type2">

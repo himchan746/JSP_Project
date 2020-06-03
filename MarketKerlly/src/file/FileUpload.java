@@ -18,8 +18,8 @@ public class FileUpload {
 	private Connection con;
 	private ResultSet rs;
 	private PreparedStatement ps;
-	
-	public FileUpload() throws Exception	{
+
+	public FileUpload() throws Exception {
 		Class.forName("oracle.jdbc.OracleDriver");
 		con = DriverManager.getConnection(url, id, pwd);
 	}
@@ -66,18 +66,5 @@ public class FileUpload {
 		stmt.close();
 		return maxID;
 	}
-
-//	public static void main(String[] args) {
-//		String fileName = "C:\\Users\\인호\\Desktop\\DBImage\\폭립.jpg";
-//		FileUpload fileup = new FileUpload(fileName);
-//		
-//		
-//		
-//		
-//		
-//		
-//		
-//
-//	}
 
 }

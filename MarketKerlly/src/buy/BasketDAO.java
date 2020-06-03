@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class BasketDAO {
-	private String id = "project", pwd = "1234";
+	private String id = "jsp", pwd = "1234";
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	private Connection con;
 	private ResultSet rs;
@@ -26,7 +26,7 @@ public class BasketDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, cus_id);
-			ps.executeQuery();
+			rs=ps.executeQuery();
 			while(rs.next()) {
 				BuyDTO bd = new BuyDTO();
 				bd.setCus_id(rs.getString("cus_id"));

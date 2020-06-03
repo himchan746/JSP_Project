@@ -122,7 +122,7 @@ public class FileDAO {
 	      List<FileDTO> list = new ArrayList<FileDTO>();
 	      int clickCount = 0;
 	      try {
-	         String sql = "select * from productinfo order by click desc";
+	         String sql = "select * from (select * from productinfo order by click desc) where rownum<=4";
 	         ps = con.prepareStatement(sql);
 	         rs = ps.executeQuery();
 	         while (rs.next()) {

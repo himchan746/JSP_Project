@@ -7,58 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>마켓케리::여기로와 모든게 다있어!!</title>
-
-<style type="text/css">
-/* ---------------------------------------------- 모바일 */
-
-/* ---------------------------------------------- basic */
-#headerdiv {
-	display: flex;
-	flex-flow: column;
-	margin: 0 auto;
-	text-align: right;
-}
-
-/* ---------------------------------------------- top */
-#top ul {
-	text-align: right;
-}
-
-#topul li {
-	margin: 3px;
-	display: inline;
-	list-style: none;
-	font-size: 10px;
-	padding: 5px;
-	border-radius: 4px;
-	border: 1px solid purple;
-}
-
-#topul li:hover {
-	background: purple;
-}
-
-#topul li a {
-	font-size: 13px;
-	text-decoration: none;
-	color: purple;
-}
-
-#topul li a:hover {
-	color: white;
-}
-
-/* ---------------------------------------------- middle */
-#middle {
-	text-align: center;
-	color: purple;
-	font-size: 30px;
-}
-
-#middle {
-	text-align: center;
-}
-</style>
+	<link href="css/header.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<fmt:requestEncoding value="utf-8" />

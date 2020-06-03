@@ -153,7 +153,6 @@ public class FileDAO {
 	   }
 	
 	public List<FileDTO> getSearchFile(String search) {
-		System.out.println(search);
 		List<FileDTO> list = new ArrayList<FileDTO>();
 		try {
 			String sql = "select * from PRODUCTINFO where pro_name like '%"+search+"%' order by pro_id asc";

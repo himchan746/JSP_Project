@@ -3,7 +3,15 @@ package buy;
 public class BuyDTO {
 	private String cus_id;
 	private int pro_id;
+	private String pro_name;
 	private int pro_count;
+	
+	public String getPro_name() {
+		return pro_name;
+	}
+	public void setPro_name(String pro_name) {
+		this.pro_name = pro_name;
+	}
 	private int price;
 	
 	public int getPrice() {
@@ -30,6 +38,9 @@ public class BuyDTO {
 	public void setPro_count(int pro_count) {
 		this.pro_count = pro_count;
 	}
-	
-	
+	@Override
+	public String toString() {
+		return "BuyDTO [cus_id=" + cus_id + ", pro_id=" + pro_id + ", pro_name=" + pro_name + ", pro_count=" + pro_count
+				+ ", price=" + price + "]";
+	}
 }

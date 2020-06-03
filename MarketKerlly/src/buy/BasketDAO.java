@@ -15,7 +15,7 @@ public class BasketDAO {
 	private PreparedStatement ps;
 
 	public BasketDAO() throws ClassNotFoundException, SQLException {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Class.forName("oracle.jdbc.OracleDriver");
 		con = DriverManager.getConnection(url, id, pwd);
 	}
 	

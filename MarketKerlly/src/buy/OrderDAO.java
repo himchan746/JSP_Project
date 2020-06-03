@@ -15,10 +15,10 @@ public class OrderDAO {
 	private PreparedStatement ps;
 
 	public OrderDAO() throws ClassNotFoundException, SQLException {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Class.forName("oracle.jdbc.OracleDriver");
 		con = DriverManager.getConnection(url, id, pwd);
 	}
-
+	
 	// 로그인한 사람이 주문완료한 주문목록 출력 
 	public ArrayList<BuyDTO> OrderList(String cus_id) {
 		ArrayList<BuyDTO> list = new ArrayList<BuyDTO>();
@@ -26,7 +26,7 @@ public class OrderDAO {
 		try {
 			ps = con.prepareStatement(sql);
 			ps.setString(1, cus_id);
-			ps.executeQuery();
+			rs = ps.executeQuery();
 			while (rs.next()) {
 				BuyDTO bd = new BuyDTO();
 				bd.setCus_id(rs.getString("cus_id"));
@@ -36,7 +36,7 @@ public class OrderDAO {
 				list.add(bd);
 			}
 		} catch (SQLException e) {
-			e.printStackTrace();
+			System.out.println("주문내역이 없습니다.");
 		}
 		return list;
 	}

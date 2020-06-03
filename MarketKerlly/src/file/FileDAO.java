@@ -1,8 +1,11 @@
 package file;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -115,6 +118,34 @@ public class FileDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+	//상품 상세 설명 페이지(productView)에서 이미지를 띄우기 위해 만든 메서드
+	public FileDTO getFileById(String proId) {
+		FileDTO dto = new FileDTO();
+		String sql="select img from productinfo where pro_id=?";
+		try {
+			ps=con.prepareStatement(sql);
+			ps.setString(1, proId);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				InputStream in = rs.getBinaryStream("img");
+				BufferedImage bimg = ImageIO.read(in);
+				in.close();
+				
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				ImageIO.write(bimg, "jpg", baos);
+				baos.flush();
+				byte[] imageInByteArray = baos.toByteArray();
+	            baos.close();
+	            dto.setImg(javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray));
+			}
+		} catch (SQLException e) {
+			System.out.println("sql error : "+sql);
+		} catch (IOException e) {
+			System.out.println("ImageIO.read error");
+		}
+		
+		return dto;
 	}
 
 	public List<FileDTO> getHotFile() {

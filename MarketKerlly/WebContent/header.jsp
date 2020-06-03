@@ -265,7 +265,7 @@
                </form>
             </div>
             <div class="shopping">
-               <img id="shopimage"src="https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_cart-512.png">
+               <img id="shopimage"src="https://cdn0.iconfinder.com/data/icons/elasto-online-store/26/00-ELASTOFONT-STORE-READY_cart-512.png" onclick="location.href='cart.jsp'">
             </div>
          </div>
       </div>

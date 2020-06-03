@@ -8,6 +8,7 @@
 <title>마켓케리 :: 내일의 장보기 , 마켓케리</title>
 </head>
 <body>
+<%@ include file="header.jsp" %>
 	<c:choose>
 		<c:when test="${not empty idsession }">
 				<jsp:useBean id="basketDao" class="buy.BasketDAO"/>
@@ -27,5 +28,6 @@
 			<jsp:forward page="login.jsp" />
 		</c:otherwise>
 	</c:choose>
+	<%@ include file="footer.jsp" %>
 </body>
 </html>

@@ -31,16 +31,16 @@ public class FileUpload {
 			System.out.println("fileLength : " + fileLength);
 			InputStream is = new FileInputStream(file);
 
-			String sql = "insert into productinfo values (?,?,?,?,?,?,sysdate)";
+			String sql = "insert into productinfo values (?,?,?,?,?,?,?,sysdate)";
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, maxID);
-			ps.setString(2, "폭립");
-			ps.setInt(3, 2340);
-			ps.setInt(4, 17900);
-			ps.setBinaryStream(5, is, fileLength);
-			ps.setInt(6, 0);
-			
+			ps.setString(2, "음식");
+			ps.setString(3, "특양");
+			ps.setInt(4, 124);
+			ps.setInt(5, 22000);
+			ps.setBinaryStream(6, is, fileLength);
+			ps.setInt(7, 0);
 			ps.executeUpdate();
 			ps.close();
 			con.close();
@@ -64,7 +64,7 @@ public class FileUpload {
 	}
 
 	public static void main(String[] args) {
-		String fileName = "C:\\Users\\인호\\Desktop\\DBImage\\폭립.jpg";
+		String fileName = "C:\\평일 자바 안지현\\DBImage\\특양.jpg";
 		FileUpload fileup = new FileUpload(fileName);
 		
 		

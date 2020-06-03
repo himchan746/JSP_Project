@@ -33,7 +33,6 @@
 	background: white;
 }
 
-
 #mainmiddleTitle {
 	padding: 79px 0 35px;
 	text-align: center;
@@ -43,7 +42,7 @@
 #kurlyMain {
 	width: 1200px;
 	opacity: 1;
-	height: 1000px;
+	height: 1200px;
 	margin: 0 auto;
 }
 
@@ -51,7 +50,7 @@
 	width: 100%;
 	position: relative;
 	transition-duration: 0s;
-	transform : translate3d(-15px ,0px ,0px)
+	transform: translate3d(-15px, 0px, 0px)
 }
 
 .list li {
@@ -107,6 +106,15 @@
 <body>
 	<jsp:useBean id="fileDAO" class="file.FileDAO" />
 
+	<c:choose>
+		<c:when test="${param.start eq null}">
+			<c:set var="start" value="1" />
+		</c:when>
+		<c:otherwise>
+			<c:set var="start" value="${param.start }" />
+		</c:otherwise>
+	</c:choose>
+
 	<div>
 		<div>
 			<%@include file="header.jsp"%>
@@ -121,32 +129,65 @@
 			<div>
 				<!-- section2 이 상품 어때요? -->
 				<div id="mainmiddleList1">
-				
+
 					<div id="mainmiddleTitle">
 						<h2>'${param.search}' 에 대한 검색 결과</h2>
 					</div>
 					<!--  -->
 					<div id="kurlyMain">
-						<ul class="list">
-							<c:forEach var="search"
-								items="${fileDAO.getSearchFile(param.search)}">
-								<li>
-								<a class="thumba" href="productView.jsp?proId=${search.pro_id}"> 
-									<img src='data:x-image/jpg;base64,${search.img}' class="thumb" />
-								</a>
-									<div class="info_goods">
-										<span class="name"> 
-										<a class="txt" href="productView.jsp?proId=${search.pro_id}">${search.pro_name}</a>
-										</span> 
-											<span class="price"> 
-											<fmt:formatNumber value="${search.price}" pattern="#,###" />원
-										</span>
-									</div>
-								</li>
-							</c:forEach>
-						</ul>
+						<c:set var="filelist" value="${fileDAO.getSearchFile(param.search , start)}" />
+						<c:set var="totalList" value="${fileDAO.getTotalList(param.search)}" />
+						<c:choose>
+							<c:when test="${filelist.size() ne 0}">
+								<ul class="list">
+									<c:forEach var="search" items="${filelist}">
+										<li><a class="thumba" href="productView.jsp?proId=${search.pro_id}">
+										<img src='data:x-image/jpg;base64,${search.img}' class="thumb" />
+										</a>
+											<div class="info_goods">
+												<span class="name"> 
+												<a class="txt" href="productView.jsp?proId=${search.pro_id}">${search.pro_name}</a>
+												</span> 
+												<span class="price"> 
+													<fmt:formatNumber value="${search.price}" pattern="#,###" />원
+												</span>
+											</div>
+										</li>
+									</c:forEach>
+								</ul>
+							</c:when>
+							<c:otherwise>
+									<h1 align="center">검색 결과 없습니다</h1>
+							</c:otherwise>
+						</c:choose>
+					</div>
+
+					<div align="center">
+						<c:choose>
+							<c:when test="${start > 1}">
+								<button type="button"
+									onclick="location.href='search.jsp?start=${start-1}&search=${param.search}'">이전</button>
+							</c:when>
+							<c:otherwise>
+								<button type="button" disabled>이전</button>
+							</c:otherwise>
+						</c:choose>
 						
-						
+						<c:forEach begin="1" end="${totalList}" step="1" var="cnt">
+							<a href="search.jsp?start=${cnt}&search=${param.search}">[${cnt}]</a>
+						</c:forEach>
+
+						<c:choose>
+							<c:when test="${start < totalList}">
+								<button type="button"
+									onclick="location.href='search.jsp?start=${start+1}&search=${param.search}'">다음</button>
+							</c:when>
+							<c:otherwise>
+								<button type="button" disabled>다음</button><br>
+							</c:otherwise>
+						</c:choose>
+						<hr>
+						${start} / ${totalList}
 					</div>
 				</div>
 				<div>

@@ -34,7 +34,7 @@ public class FileUpload {
 			
 			String arr[] = new String[20];
 			
-			String sql = "insert into productinfo values (?,?,?,?,?,?,?,sysdate,)";
+			String sql = "insert into productinfo values (?,?,?,?,?,?,?,sysdate)";
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, maxID);

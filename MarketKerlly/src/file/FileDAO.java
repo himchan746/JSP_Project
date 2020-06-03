@@ -42,7 +42,7 @@ public class FileDAO {
 		int cntarr[] = new int[4];
 
 		for (int i = 0; i < 4; i++) {
-			int cnt = (int) ((Math.random() * 20) + 1);
+			int cnt = (int) ((Math.random() * maxID) + 1);
 			cntarr[i] = cnt;
 			for(int j = 0 ; j < i ; j++) {
 				if (cntarr[j] == cnt)

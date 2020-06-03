@@ -19,12 +19,13 @@ public class FileUpload {
 	private ResultSet rs;
 	private PreparedStatement ps;
 	
+	public FileUpload() throws Exception	{
+		Class.forName("oracle.jdbc.OracleDriver");
+		con = DriverManager.getConnection(url, id, pwd);
+	}
 
-	public FileUpload(String fileName) {
+	public void fileUpload(String fileName ,String name , int cnt ,int price , String group ) {
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-			con = DriverManager.getConnection(url, id, pwd);
-
 			int maxID = getMaxID(con) + 1;
 			File file = new File(fileName);
 			int fileLength = (int) file.length();
@@ -33,15 +34,16 @@ public class FileUpload {
 			
 			String arr[] = new String[20];
 			
-			String sql = "insert into productinfo values (?,?,?,?,?,?,sysdate)";
+			String sql = "insert into productinfo values (?,?,?,?,?,?,sysdate,?)";
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, maxID);
-			ps.setString(2, "폭립");
-			ps.setInt(3, 2340);
-			ps.setInt(4, 17900);
+			ps.setString(2, name);
+			ps.setInt(3, cnt);
+			ps.setInt(4, price);
 			ps.setBinaryStream(5, is, fileLength);
 			ps.setInt(6, 0);
+			ps.setString(7, group);
 			
 			ps.executeUpdate();
 			ps.close();
@@ -65,17 +67,17 @@ public class FileUpload {
 		return maxID;
 	}
 
-	public static void main(String[] args) {
-		String fileName = "C:\\Users\\인호\\Desktop\\DBImage\\폭립.jpg";
-		FileUpload fileup = new FileUpload(fileName);
-		
-		
-		
-		
-		
-		
-		
-
-	}
+//	public static void main(String[] args) {
+//		String fileName = "C:\\Users\\인호\\Desktop\\DBImage\\폭립.jpg";
+//		FileUpload fileup = new FileUpload(fileName);
+//		
+//		
+//		
+//		
+//		
+//		
+//		
+//
+//	}
 
 }

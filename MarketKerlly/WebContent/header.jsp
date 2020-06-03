@@ -148,6 +148,7 @@
       <div id="headerdiv">
          <div Class="top">
             <ul id="topul">
+                     <li><a href="file/fileUpload.jsp">파일 올리기</a></li>
                <c:choose>
                   <c:when test="${sessionScope.idsession == null }">
                      <li><a href="login.jsp">로그인</a></li>

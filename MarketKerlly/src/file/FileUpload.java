@@ -18,29 +18,33 @@ public class FileUpload {
 	private Connection con;
 	private ResultSet rs;
 	private PreparedStatement ps;
-	
 
-	public FileUpload(String fileName) {
+	public FileUpload() throws Exception {
+		Class.forName("oracle.jdbc.OracleDriver");
+		con = DriverManager.getConnection(url, id, pwd);
+	}
+
+	public void fileUpload(String fileName ,String name , int cnt ,int price , String group ) {
 		try {
-			Class.forName("oracle.jdbc.OracleDriver");
-			con = DriverManager.getConnection(url, id, pwd);
-
 			int maxID = getMaxID(con) + 1;
 			File file = new File(fileName);
 			int fileLength = (int) file.length();
 			System.out.println("fileLength : " + fileLength);
 			InputStream is = new FileInputStream(file);
-
+			
+			String arr[] = new String[20];
+			
 			String sql = "insert into productinfo values (?,?,?,?,?,?,?,sysdate)";
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, maxID);
-			ps.setString(2, "음식");
-			ps.setString(3, "특양");
-			ps.setInt(4, 124);
-			ps.setInt(5, 22000);
+			ps.setString(2, group);
+			ps.setString(3, name);
+			ps.setInt(4, cnt);
+			ps.setInt(5, price);
 			ps.setBinaryStream(6, is, fileLength);
 			ps.setInt(7, 0);
+			
 			ps.executeUpdate();
 			ps.close();
 			con.close();
@@ -61,19 +65,6 @@ public class FileUpload {
 		result.close();
 		stmt.close();
 		return maxID;
-	}
-
-	public static void main(String[] args) {
-		String fileName = "C:\\평일 자바 안지현\\DBImage\\특양.jpg";
-		FileUpload fileup = new FileUpload(fileName);
-		
-		
-		
-		
-		
-		
-		
-
 	}
 
 }

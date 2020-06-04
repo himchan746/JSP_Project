@@ -8,104 +8,35 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <style type="text/css">
-* {
-	list-style: none;
-}
-
-#mainImageBox {
-	height: 400px;
-}
-
-#mainImageView {
-	width: 100%;
-	height: 400px;
-	margin: auto;
-}
-
-#mainImageView img {
-	width: 100%;
-	height: 100%;
-}
-
-#mainmiddleList1 {
-	width: 100%;
-	margin: 0 auto;
-	background: white;
-}
-
-#mainmiddleTitle {
-	padding: 79px 0 35px;
-	text-align: center;
-	color: #333333;
-}
-
 #kurlyMain {
 	width: 1200px;
 	opacity: 1;
-	height: 1200px;
+	height: ;
 	margin: 0 auto;
 }
 
-.list {
-	width: 100%;
-	position: relative;
-	transition-duration: 0s;
-	transform: translate3d(-15px, 0px, 0px)
+img{
+	width: 500px;
+	height: 600px;
 }
 
-.list li {
-	float: left;
-	list-style: none;
-	position: relative;
-	width: 23%;
-	margin-right: 15px;
-}
-
-.thumb {
-	display: block;
-	margin: 0 auto;
-	background-position: 50% 50%;
-	background-size: cover;
-	transform: scale(1);
-	transition: all 0.3s ease-in-out;
-	width: 249px;
-	height: 320px;
-}
-
-#name {
-	background-color: black;
-	overflow: hidden;
-	max-height: 50px;
-	margin-top: 30px;
-	text-overflow: ellipsis;
-}
-
-.txt {
-	font-size: 16px;
-	line-height: 23px;
-	color: #333333;
-}
-
-.price {
-	display: block;
-	color: #333333;
-	font-weight: 700;
-	font-size: 16px;
-	line-height: 20px;
-}
-
-.info_goods {
-	padding-top: 10px;
-}
-
-.thumba {
-	cursor: pointer;
+#input{
+	background: skyblue;
+	border-radius: 10px;
+	color: white;
+	height: 50px;
+	width: 500px;
+	font-size: 24pt;
 }
 </style>
+
+	
+
 </head>
 <body>
 	<jsp:useBean id="fileDAO" class="file.FileDAO" />
 
+	<!--페이지 작업 -->
 	<c:choose>
 		<c:when test="${param.start eq null}">
 			<c:set var="start" value="1" />
@@ -114,57 +45,83 @@
 			<c:set var="start" value="${param.start }" />
 		</c:otherwise>
 	</c:choose>
-
+	
+	<c:set var="filelist" value="${fileDAO.getSearchFile(param.search , start)}" />
+	<c:set var="totalList" value="${fileDAO.getTotalList(param.search)}" />
+	<!--페이지 작업 완료 -->
+	
+	
 	<div>
-		<div>
-			<%@include file="header.jsp"%>
-		</div>
-		<section>
-			<!-- section1 -->
-			<div id="mainImageBox">
-				<div id="mainImageView">
-					<img alt="" src="/MarketKerlly/pic/icecream.png">
-				</div>
-			</div>
-			<div>
-				<!-- section2 이 상품 어때요? -->
-				<div id="mainmiddleList1">
-
-					<div id="mainmiddleTitle">
-						<h2>'${param.search}' 에 대한 검색 결과</h2>
-					</div>
-					<!--  -->
-					<div id="kurlyMain">
-						<c:set var="filelist" value="${fileDAO.getSearchFile(param.search , start)}" />
-						<c:set var="totalList" value="${fileDAO.getTotalList(param.search)}" />
-						<c:choose>
-							<c:when test="${filelist.size() ne 0}">
-							${filelist.size() }개의 상품이 검색되었습니다.
-							<hr>
-								<ul class="list">
-									<c:forEach var="search" items="${filelist}">
-										<li><a class="thumba" href="productView.jsp?proId=${search.pro_id}">
+		<%@include file="header.jsp"%>
+	</div>
+	<div style="height: 50px;">
+		
+	</div>
+	<section>
+		<div id="kurlyMain">
+			<table style="width: 100%; height: 100%;">
+				<tr>
+					<td colspan="3">
+						<h2 align="center">'${param.search}' 에 대한 검색 결과</h2>
+						
+						${filelist.size() }개의 상품이 검색되었습니다.
+					<hr>
+					</td>
+				</tr>
+				
+				<c:choose>
+					<c:when test="${filelist.size() ne 0}">
+						<c:forEach var="search" items="${filelist}">
+							<tr>
+								<td style="width: 500px;" rowspan="2">
+									<a class="thumba"	href="productView.jsp?proId=${search.pro_id}">
 										<img src='data:x-image/jpg;base64,${search.img}' class="thumb" />
-										</a>
-											<div class="info_goods">
-												<span class="name"> 
-												<a class="txt" href="productView.jsp?proId=${search.pro_id}">${search.pro_name}</a>
-												</span> 
-												<span class="price"> 
-													<fmt:formatNumber value="${search.price}" pattern="#,###" />원
-												</span>
+									</a>
+								</td>
+								
+								<td style="height: 50px;" align="center" colspan="2">
+									<div style="height: 100%; width: 80%;" align="left">
+											<font size="20pt">${search.pro_name}</font><br><br>
+											<font size="6em"><fmt:formatNumber value="${search.price}" pattern="#,###" /></font>원<br><br>
+										<hr style="opacity: 0.3;">
+											<br><font size="3em">배송 구분 &nbsp;&nbsp;&nbsp; 퀵 배송 / 택배 배송</font><br><br>
+										<hr style="opacity: 0.3;">
+											<br><font size="3em">안내 사항 &nbsp;&nbsp;&nbsp; 맛있을꺼임</font><br><br>
+										<hr style="opacity: 0.3;">
+											<br><font size="3em">재고 수량 &nbsp;&nbsp;&nbsp; ${search.pro_count }개</font><br><br>
+										<hr style="opacity: 0.3;">
+										<br>
+									</div>
+									</td>
+									
+									<tr>
+										<th colspan="2" align="center" style="height: 60px;">
+											<div style="height: 100%; width: 80%;" align="right">
+											<br><br>
+											<input type="button" value="상품 상세 보기" id="input" onclick="location.href='productView.jsp?proId=${search.pro_id}'">
 											</div>
-										</li>
-									</c:forEach>
-								</ul>
-							</c:when>
-							<c:otherwise>
-									<h1 align="center">검색 결과 없습니다</h1>
-							</c:otherwise>
-						</c:choose>
-					</div>
+									</th>
+								</tr>
+							</tr>
+							<tr>
+								<th colspan="2">
+									<hr>
+								</th>
+							</tr>
+							
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+						<tr>
+							<th>
+								<h1 align="center">검색 결과 없습니다</h1>
+							</th>
+						</tr>
+					</c:otherwise>
+				</c:choose>
 
-					<div align="center">
+				<tr>
+					<th colspan="2">
 						<c:choose>
 							<c:when test="${start > 1}">
 								<button type="button"
@@ -190,13 +147,17 @@
 						</c:choose>
 						<hr>
 						${start} / ${totalList}
-					</div>
-				</div>
-				<div>
-					<%@include file="footer.jsp"%>
-				</div>
-			</div>
-		</section>
+					
+					</th>
+				</tr>
+
+			</table>
+		</div>
+	</section>
+	<div>
+		<%@include file="footer.jsp"%>
 	</div>
+	
+	
 </body>
 </html>

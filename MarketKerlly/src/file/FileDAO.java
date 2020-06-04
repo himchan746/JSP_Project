@@ -189,8 +189,8 @@ public class FileDAO {
 					+ "(select pro_id ,rownum rn from PRODUCTINFO where pro_name like '%" + search + "%')B "
 					+ "where A.pro_id = B.pro_id and rn between ? and ? order by rn asc";
 			ps = con.prepareStatement(sql);
-			ps.setInt(1, 12 * (start - 1) + 1);
-			ps.setInt(2, 12 * (start - 1) + 12);
+			ps.setInt(1, 5 * (start - 1) + 1);
+			ps.setInt(2, 5 * (start - 1) + 5);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				FileDTO dto = new FileDTO();
@@ -207,6 +207,7 @@ public class FileDAO {
 				dto.setPrice(rs.getInt("pro_price"));
 				dto.setPro_name(rs.getString("pro_name"));
 				dto.setPro_id(rs.getInt("pro_id"));
+				dto.setPro_count(rs.getInt("pro_count"));
 				list.add(dto);
 			}
 
@@ -229,9 +230,9 @@ public class FileDAO {
 		if (rs.next())
 			totalList = rs.getInt(1);
 
-		if (totalList % 12 == 0)
-			return totalList / 12;
+		if (totalList % 5 == 0)
+			return totalList / 5;
 		else
-			return totalList / 12 + 1;
+			return totalList / 5 + 1;
 	}
 }

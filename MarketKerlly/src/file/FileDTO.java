@@ -6,7 +6,16 @@ public class FileDTO {
 	private String pro_name;
 	private int pro_id;
 	private String pro_group;
+	private int pro_count;
 	
+	public int getPro_count() {
+		return pro_count;
+	}
+
+	public void setPro_count(int pro_count) {
+		this.pro_count = pro_count;
+	}
+
 	private int listCount;
 
 	public String getPro_group() {

@@ -43,7 +43,7 @@ public class OrderDAO {
 	}
 
 	// 결제 상품들을 주문한 목록(orderTable)에 집어넣기
-	public void inBasket(String cus_id, int pro_id, int pro_count,int price, String pro_name) {
+	public void insertOrder(String cus_id, int pro_id, int pro_count,int price, String pro_name) {
 		String sql = "insert into ordertable values(?,?,?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);

@@ -43,7 +43,7 @@ public class BasketDAO {
 	}
 	
 	//장바구니에 집어넣기
-	public void inBasket(String cus_id,int pro_id, int pro_count ,int price, String pro_name) {
+	public void insertBasket(String cus_id,int pro_id, int pro_count ,int price, String pro_name) {
 		String sql = "insert into basket values(?,?,?,?,?)";
 		try {
 			ps = con.prepareStatement(sql);
@@ -59,7 +59,7 @@ public class BasketDAO {
 		
 	}
 	//결제된 상품 장바구니에서 삭제
-	public void outBasket(String cus_id, int pro_id) {
+	public void deleteBasket(String cus_id, int pro_id) {
 		String sql = "delete from basket where cus_id=? and pro_ID=?;";
 		try {
 			ps = con.prepareStatement(sql);

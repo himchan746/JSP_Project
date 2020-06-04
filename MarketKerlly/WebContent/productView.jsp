@@ -49,6 +49,7 @@
 			</tr>
 		</table>
 		<input type="hidden" name="proId" value="${productDto.proId}">
+		<input type="hidden" name="proName" value="${productDto.proName}">
 		<input type="submit" value="장바구니 담기">
 	</form>
 	<%@ include file="footer.jsp"%>

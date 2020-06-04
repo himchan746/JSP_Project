@@ -13,7 +13,7 @@
 			<jsp:useBean id="proDao" class="productInfo.ProductInfoDAO" />
 			<c:set var="price" value="${proDao.getProductPrice(param.proId)}" />
 			<jsp:useBean id="basketDao" class="buy.BasketDAO" />
-			${basketDao.inBasket(idsession,param.proId*1,param.count*1,price*1)}
+			${basketDao.inBasket(idsession,param.proId*1,param.count*1,price*1,param.proName)}
 			<script type="text/javascript">
 			var msg=confirm("장바구니에 추가되었습니다.\n장바구니로 이동하시겠습니까?")
 			if(msg){

@@ -5,6 +5,7 @@ public class BuyDTO {
 	private int pro_id;
 	private String pro_name;
 	private int pro_count;
+	private int price;
 	
 	public String getPro_name() {
 		return pro_name;
@@ -12,8 +13,6 @@ public class BuyDTO {
 	public void setPro_name(String pro_name) {
 		this.pro_name = pro_name;
 	}
-	private int price;
-	
 	public int getPrice() {
 		return price;
 	}

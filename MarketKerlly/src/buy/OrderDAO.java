@@ -8,7 +8,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class OrderDAO {
-	private String id = "project", pwd = "1234";
+	private String id = "jsp", pwd = "1234";
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	private Connection con;
 	private ResultSet rs;

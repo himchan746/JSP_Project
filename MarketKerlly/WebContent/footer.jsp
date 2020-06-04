@@ -4,61 +4,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<style type="text/css">
-#footer {
-	width: 1050px;
-	margin: 0 auto;
-	padding-bottom: 60px;
-	word-break: break-all;
-	hight: 300px;
-}
-
-#footer0 {
-	width: 525px;
-	height: 400px;
-	float: left;
-}
-
-#footer1 {
-	height: 400px;
-	color: #333333;
-	font-style: italic;
-}
-
-#footercopy {
-	text-align: center;
-	color: purple;
-	font-style: italic;
-}
-
-#var {
-	display: flex;
-}
-
-#var div {
-	margin-left: 10px;
-	width: 500px;
-}
-.list{
-	font-size: 14px;
-	color: #333333;
-	line-height: 22px;
-}
-.tit{
-	padding-top:4px;
-	font-weight: 800;
-	color: #333333;
-	line-height: 36px;
-	float:left;
-	width: 100px;
-	text-align: center;
-	margin-right: 20px;
-}
-#ftmessage{
-	he
-	margin-top: 60px; 
-}
-</style>
+	<link href="css/footer.css"rel="stylesheet" type="text/css">
 </head>
 <body>
 	<footer>

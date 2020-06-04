@@ -11,6 +11,7 @@ public class ProductInfoDAO {
 	private PreparedStatement ps;
 	private ResultSet rs;
 	
+	
 	public ProductInfoDAO() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -40,5 +41,14 @@ public class ProductInfoDAO {
 			dto.setProRegTime(rs.getTimestamp("regtime"));
 		}
 		return dto ;
+	}
+	
+	public int getProductPrice(String proId) throws SQLException {
+		String sql = "select pro_price from productinfo where pro_id =?";
+		ps = con.prepareStatement(sql);
+		ps.setString(1, proId);
+		rs=ps.executeQuery();
+		rs.next();
+		return  rs.getInt(1);
 	}
 }

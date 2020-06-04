@@ -164,6 +164,12 @@
 	position: fixed;
 }
 </style>
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
+	<link href="css/main.css" rel="stylesheet" type="text/css">
 </head>
 <body>
    <jsp:useBean id="fileDAO" class="file.FileDAO"/>
@@ -180,12 +186,12 @@
 				</div>
 			</div>
 			<div>
-				<!-- section2 이 상품 어때요? -->
+			<!-- section2 이 상품 어때요? -->
 				<div id="mainmiddleList1">
 					<div id="mainmiddleTitle">
 						<h2>이 상품 어때요?</h2>
 					</div>
-					<!--  -->
+					
 					<div id="kurlyMain">
 						<div>
 							<div class="main_type2">
@@ -194,15 +200,23 @@
 										<div class="bx-wrapper">
 											<div class="bx-viewport">
 												<ul class="list">
+												
 													<c:forEach var="Randomlist" items="${fileDAO.getRandomFile()}">
-													<li><a class="thumba" href="productView.jsp?proId=${Randomlist.pro_id}">
-													 <img src='data:x-image/jpg;base64,${Randomlist.img}' class="thumb"/>
-													</a>
-													<div class="info_goods">
-															<span class="name"> <a class="txt" href="productView.jsp?proId=${Randomlist.pro_id}">${Randomlist.pro_name}</a>
-															</span> <span class="price"><fmt:formatNumber value="${Randomlist.price}" pattern="#,###"/>원</span>
-														</div></li>
+														<li>
+															<a class="thumba"href="productView.jsp?proId=${Randomlist.pro_id}"> 
+																<img src='data:x-image/jpg;base64,${Randomlist.img}' class="thumb"/>
+															</a>
+															<div class="info_goods">
+																<span class="name">
+																	<a class="txt" href="productView.jsp?proId=${Randomlist.pro_id}">${Randomlist.pro_name}</a>
+																</span> 
+																<span class="price">
+																	<fmt:formatNumber value="${Randomlist.price}" pattern="#,###" />원
+																</span>
+															</div>
+														</li>
 													</c:forEach>
+													
 												</ul>
 											</div>
 										</div>
@@ -212,12 +226,12 @@
 						</div>
 					</div>
 				</div>
-				<!-- section3 -->
+				<!--section3 -->
 				<div id="mainmiddleList2">
 					<div id="mainmiddleTitle">
 						<h2>최근 입고 상품</h2>
 					</div>
-					<!--  -->
+					
 					<div id="kurlyMain">
 						<div>
 							<div class="main_type2">
@@ -226,15 +240,23 @@
 										<div class="bx-wrapper">
 											<div class="bx-viewport">
 												<ul class="list">
+												
 													<c:forEach var="RecentFile" items="${fileDAO.getRecentFile()}">
-													<li><a class="thumba" href="productView.jsp?proId=${RecentFile.pro_id}">
-													 <img src='data:x-image/jpg;base64,${RecentFile.img}' class="thumb"/>
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt" href="productView.jsp?proId=${RecentFile.pro_id}">${RecentFile.pro_name}</a>
-															</span> <span class="price"><fmt:formatNumber value="${RecentFile.price}" pattern="#,###"/>원</span>
-														</div></li>
+														<li>
+															<a class="thumba" href="productView.jsp?proId=${RecentFile.pro_id}">
+														 		<img src='data:x-image/jpg;base64,${RecentFile.img}' class="thumb"/>
+															</a>
+															<div class="info_goods">
+																<span class="name"> 
+																<a class="txt" href="productView.jsp?proId=${RecentFile.pro_id}">${RecentFile.pro_name}</a>
+																</span>
+																<span class="price">
+																	<fmt:formatNumber value="${RecentFile.price}" pattern="#,###"/>원
+																</span>
+															</div>
+														</li>
 													</c:forEach>
+													
 												</ul>
 											</div>
 										</div>
@@ -247,9 +269,9 @@
 				<!-- section4 -->
 				<div id="mainmiddleList1">
 					<div id="mainmiddleTitle">
-						<h2>이 상품 어때요?</h2>
+						<h2>Hot 상품</h2>
 					</div>
-					<!--  -->
+					
 					<div id="kurlyMain">
 						<div>
 							<div class="main_type2">
@@ -258,41 +280,21 @@
 										<div class="bx-wrapper">
 											<div class="bx-viewport">
 												<ul class="list">
-													<li><a class="thumba" href="join.jsp"> <img
-															class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
-													<li><a class="thumba" href="join.jsp"> <img
-															class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
-													<li><a class="thumba" href="join.jsp"> <img
-															class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
-													<li><a class="thumba" href="join.jsp"> <img
-															class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
-													<li><a class="thumba" href="join.jsp"> <img
-															class="thumb" src="/MarketKerlly/pic/ex01 (1).jpg">
-													</a>
-														<div class="info_goods">
-															<span class="name"> <a class="txt">상품 1</a>
-															</span> <span class="price">4,900원</span>
-														</div></li>
+													<c:forEach var="HotFile" items="${fileDAO.getHotFile()}">
+														<li>
+															<a class="thumba" href="productView.jsp?proId=${HotFile.pro_id}">
+														 		<img src='data:x-image/jpg;base64,${HotFile.img}' class="thumb"/>
+															</a>
+															<div class="info_goods">
+																<span class="name"> 
+																<a class="txt" href="productView.jsp?proId=${HotFile.pro_id}">${HotFile.pro_name}</a>
+																</span>
+																<span class="price">
+																	<fmt:formatNumber value="${HotFile.price}" pattern="#,###"/>원
+																</span>
+															</div>
+														</li>
+													</c:forEach>
 												</ul>
 											</div>
 										</div>
@@ -304,6 +306,7 @@
 				</div>
 			</div>
 		</section>
+	</div>
 	</div>
 	<div>
 		<%@include file="footer.jsp"%>

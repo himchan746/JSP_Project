@@ -9,7 +9,7 @@ import java.sql.SQLIntegrityConstraintViolationException;
 import java.util.ArrayList;
 
 public class CustomerDAO {
-	private String id = "ajh", pwd = "1234";
+	private String id = "jsp", pwd = "1234";
 	private String url = "jdbc:oracle:thin:@localhost:1521:xe";
 	private Connection con;
 	private ResultSet rs;

@@ -3,7 +3,7 @@ package productInfo;
 import java.sql.Timestamp;
 
 public class ProductInfoDTO {
-	private String proId;
+	private int proId;
 	private String proName;
 	private int proCount;
 	private int proPrice;
@@ -17,10 +17,10 @@ public class ProductInfoDTO {
 	public void setProImg(byte[] proImg) {
 		this.proImg = proImg;
 	}
-	public String getProId() {
+	public int getProId() {
 		return proId;
 	}
-	public void setProId(String proId) {
+	public void setProId(int proId) {
 		this.proId = proId;
 	}
 	public String getProName() {

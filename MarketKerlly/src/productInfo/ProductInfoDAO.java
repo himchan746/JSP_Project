@@ -51,4 +51,42 @@ public class ProductInfoDAO {
 		rs.next();
 		return  rs.getInt(1);
 	}
+	
+	//결재 완료 시 productinfo 에 있는 물품 수량 감소, click +1
+		public void updateProduct(int proId,int cnt) {
+			String sql = "update productinfo set pro_count=pro_count-?,click=click+? where pro_id=?";
+			try {
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, cnt);
+				ps.setInt(2, cnt);
+				ps.setInt(3, proId);
+				ps.executeUpdate();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+		//상품 주문 시 재고 여유 있는지 확인 메서드
+		public String productCountCheck(int cnt,int proId) {
+			String sql = "select pro_count from productinfo where pro_id=?";
+			String msg = null;
+			try {
+				ps = con.prepareStatement(sql);
+				ps.setInt(1, proId);
+				rs = ps.executeQuery();
+				while(rs.next()) {
+					if(rs.getInt("pro_count")==0) {
+						msg = "품절입니다";
+					}else {
+						if((rs.getInt("pro_count")-cnt)<0) {
+							msg = "수량이 부족합니다";
+						}
+					}
+				}
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+			return msg;
+		}
+		
+		
 }

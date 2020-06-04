@@ -82,7 +82,7 @@
 							<br>
 							<input type="button" value="구매하기" id="input" >
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-							<input type="button" value="장바구니 넣기" id="input" onclick="addCart(${productDto.proId})">
+							<input type="button" value="장바구니 넣기" id="input" onclick="addCart(${productDto.proId} , '${productDto.proName}')">
 						</div>
 					</th>
 				</tr>
@@ -116,8 +116,9 @@
 				document.getElementById("price").innerHTML = price
 		
 			}
-			function addCart(id) {
-				location.href="addCart.jsp?count="+count+"&proId="+id;
+			function addCart(id , name) {
+				console.log(id)
+				location.href="addCart.jsp?count="+count+"&proId="+id+"&proName="+name
 			}
 		</script>
 </body>

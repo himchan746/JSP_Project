@@ -12,6 +12,7 @@ public class ProductInfoDAO {
 	private ResultSet rs;
 	
 	
+	
 	public ProductInfoDAO() {
 		try {
 			Class.forName("oracle.jdbc.OracleDriver");
@@ -24,14 +25,14 @@ public class ProductInfoDAO {
 		
 	}
 	
-	public ProductInfoDTO getProduct(String proId) throws SQLException {
+	public ProductInfoDTO getProduct(int proId) throws SQLException {
 		String sql = "select * from productinfo where pro_id =?";
 		ProductInfoDTO dto = new ProductInfoDTO();
 		ps = con.prepareStatement(sql);
-		ps.setString(1, proId);
+		ps.setInt(1, proId);
 		rs=ps.executeQuery();
 		if(rs.next()) {
-			dto.setProId(rs.getString("pro_id"));
+			dto.setProId(rs.getInt("pro_id"));
 			dto.setProName(rs.getString("pro_name").replace("_", " "));
 			System.out.println("상품명 :  "+dto.getProName());
 			dto.setProCount(rs.getInt("pro_count"));

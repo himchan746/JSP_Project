@@ -160,6 +160,9 @@
 .thumba {
    cursor: pointer;
 }
+.headerinclude{
+	position: fixed;
+}
 </style>
 </head>
 <body>

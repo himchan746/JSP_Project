@@ -34,16 +34,16 @@ public class FileUpload {
 			
 			String arr[] = new String[20];
 			
-			String sql = "insert into productinfo values (?,?,?,?,?,?,sysdate,?)";
+			String sql = "insert into productinfo values (?,?,?,?,?,?,?,sysdate)";
 			ps = con.prepareStatement(sql);
 			
 			ps.setInt(1, maxID);
-			ps.setString(2, name);
-			ps.setInt(3, cnt);
-			ps.setInt(4, price);
-			ps.setBinaryStream(5, is, fileLength);
-			ps.setInt(6, 0);
-			ps.setString(7, group);
+			ps.setString(2, group);
+			ps.setString(3, name);
+			ps.setInt(4, cnt);
+			ps.setInt(5, price);
+			ps.setBinaryStream(6, is, fileLength);
+			ps.setInt(7, 0);
 			
 			ps.executeUpdate();
 			ps.close();

@@ -17,10 +17,10 @@
 				${buyDto.cus_id }<br>
 				${buyDto.pro_id }<br>
 				${buyDto.pro_count}<br>
-				${buyDto.price }<br>
+				${(buyDto.price*1) * (buyDto.pro_count*1)}<br>
 				<hr>
 				</c:forEach>
-				<a href="#">구매페이지로 가야합니다 여러분 ~!</a>
+				<a href="order.jsp">구매하기</a>
 		</c:when>
 		<c:otherwise>
 			<c:set var="msg" value="<script>alert('먼저 로그인 해주세요')</script>"

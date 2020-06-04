@@ -1,8 +1,11 @@
 package file;
 
 import java.awt.image.BufferedImage;
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
+import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -22,7 +25,7 @@ public class FileDAO {
 	private Connection con;
 	private ResultSet rs;
 	private PreparedStatement ps;
-	private String b64 ;
+	private String b64;
 
 	public FileDAO() throws Exception {
 		Class.forName("oracle.jdbc.driver.OracleDriver");
@@ -43,7 +46,7 @@ public class FileDAO {
 		for (int i = 0; i < 4; i++) {
 			int cnt = (int) ((Math.random() * maxID) + 1);
 			cntarr[i] = cnt;
-			for(int j = 0 ; j < i ; j++) {
+			for (int j = 0; j < i; j++) {
 				if (cntarr[j] == cnt)
 					i--;
 			}
@@ -116,46 +119,78 @@ public class FileDAO {
 		}
 		return list;
 	}
-
-	public List<FileDTO> getHotFile() {
-	      List<FileDTO> list = new ArrayList<FileDTO>();
-	      int clickCount = 0;
-	      try {
-	         String sql = "select * from (select * from productinfo order by click desc) where rownum<=4";
-	         ps = con.prepareStatement(sql);
-	         rs = ps.executeQuery();
-	         while (rs.next()) {
-	            FileDTO dto = new FileDTO();
-	            InputStream in = rs.getBinaryStream("img");
-	            BufferedImage bimg = ImageIO.read(in);
-	            in.close();
-
-	            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-	            ImageIO.write(bimg, "jpg", baos);
-	            baos.flush();
-	            byte[] imageInByteArray = baos.toByteArray();
+	//상품 상세 설명 페이지(productView)에서 이미지를 띄우기 위해 만든 메서드
+	public FileDTO getFileById(String proId) {
+		FileDTO dto = new FileDTO();
+		String sql="select img from productinfo where pro_id=?";
+		try {
+			ps=con.prepareStatement(sql);
+			ps.setString(1, proId);
+			rs = ps.executeQuery();
+			if(rs.next()) {
+				InputStream in = rs.getBinaryStream("img");
+				BufferedImage bimg = ImageIO.read(in);
+				in.close();
+				
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				ImageIO.write(bimg, "jpg", baos);
+				baos.flush();
+				byte[] imageInByteArray = baos.toByteArray();
 	            baos.close();
 	            dto.setImg(javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray));
-	            dto.setPrice(rs.getInt("pro_price"));
-	            dto.setPro_name(rs.getString("pro_name"));
-	            dto.setPro_id(rs.getInt("pro_id"));
-	            list.add(dto);
-	            
-	            clickCount++;
-	            if(clickCount>3) break;
-	         }
+			}
+		} catch (SQLException e) {
+			System.out.println("sql error : "+sql);
+		} catch (IOException e) {
+			System.out.println("ImageIO.read error");
+		}
+		
+		return dto;
+	}
 
-	      } catch (Exception e) {
-	         e.printStackTrace();
-	      }
-	      return list;
-	   }
-	
-	public List<FileDTO> getSearchFile(String search) {
+	public List<FileDTO> getHotFile() {
 		List<FileDTO> list = new ArrayList<FileDTO>();
 		try {
-			String sql = "select * from PRODUCTINFO where pro_name like '%"+search+"%' order by pro_id asc";
+			String sql = "select * from (select * from productinfo order by click desc) where rownum<=4";
 			ps = con.prepareStatement(sql);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				FileDTO dto = new FileDTO();
+				InputStream in = rs.getBinaryStream("img");
+				BufferedImage bimg = ImageIO.read(in);
+				in.close();
+
+				ByteArrayOutputStream baos = new ByteArrayOutputStream();
+				ImageIO.write(bimg, "jpg", baos);
+				baos.flush();
+				byte[] imageInByteArray = baos.toByteArray();
+				baos.close();
+				dto.setImg(javax.xml.bind.DatatypeConverter.printBase64Binary(imageInByteArray));
+				dto.setPrice(rs.getInt("pro_price"));
+				dto.setPro_name(rs.getString("pro_name"));
+				dto.setPro_id(rs.getInt("pro_id"));
+				list.add(dto);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return list;
+	}
+
+	public List<FileDTO> getSearchFile(String search, int start) {
+		List<FileDTO> list = new ArrayList<FileDTO>();
+		if(search.equals("")) {
+			return list;
+		}
+		try {
+			String sql = "select ROWNUM rn, A.* from PRODUCTINFO A ,"
+					+ "(select pro_id ,rownum rn from PRODUCTINFO where pro_name like '%" + search + "%')B "
+					+ "where A.pro_id = B.pro_id and rn between ? and ? order by rn asc";
+			ps = con.prepareStatement(sql);
+			ps.setInt(1, 12 * (start - 1) + 1);
+			ps.setInt(2, 12 * (start - 1) + 12);
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				FileDTO dto = new FileDTO();
@@ -179,5 +214,24 @@ public class FileDAO {
 			e.printStackTrace();
 		}
 		return list;
+	}
+
+	public int getTotalList(String search) throws SQLException {
+		if(search.equals("")) {
+			return 1;
+		}
+		
+		String sql = "select count(*) from productinfo where pro_name like '%"+search+"%'";
+		int totalList = 0;
+		ps = con.prepareStatement(sql);
+		rs = ps.executeQuery();
+
+		if (rs.next())
+			totalList = rs.getInt(1);
+
+		if (totalList % 12 == 0)
+			return totalList / 12;
+		else
+			return totalList / 12 + 1;
 	}
 }

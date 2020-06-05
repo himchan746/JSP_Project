@@ -16,7 +16,7 @@ public class CustomerDAO {
 	private PreparedStatement ps;
 
 	public CustomerDAO() throws ClassNotFoundException, SQLException {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Class.forName("oracle.jdbc.OracleDriver");
 		con = DriverManager.getConnection(url, id, pwd);
 	}
 

@@ -28,7 +28,7 @@ public class FileDAO {
 	private String b64;
 
 	public FileDAO() throws Exception {
-		Class.forName("oracle.jdbc.driver.OracleDriver");
+		Class.forName("oracle.jdbc.OracleDriver");
 		con = DriverManager.getConnection(url, id, pwd);
 	}
 
